@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #div1 {
+            height: 400px;
+            width: 300px;
+            background-color: grey;
+            margin:100px auto;
+            text-align: center;
+        }
+        #count {
+            width: 200px;
+            height: 150px;
+            line-height: 150px;
+            margin: auto;
+            font-size: 40px;
+        }
+        #div1 input{
+            width: 150px;
+            height: 40px;
+            background-color: yellow;
+            font-size: 25px;
+            margin-top: 20px;
+        }
+    </style>
+    <script type="text/javascript">
+       function $(id) {
+            return document.getElementById(id);
+        } 
+        window.onload = function(){
+            var count = 0;
+            var timer = null;
+            $("start").onclick = function(){
+                timer = setInterval(function () {
+                    count++;
+                $("id_S").innerHTML = setNum(count % 60);
+                $("id_M").innerHTML = setNum(parseInt(count / 60) % 60);
+                $("id_H").innerHTML = setNum(parse(count / 3600));
+                },1000);  
+            } 
+            function setNum(num) {
+                if (num < 10) {
+                    return "0" + num;
+                }else{
+                    return num;
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id = "div1">
+        <div id = "count">
+            <span id = "id_H">00</span>
+            <span id = "id_M">00</span>
+            <span id = "id_S">00</span>
+        </div>
+        <input type="button" value="开始" id="start" />
+        <input type="button" value="暂停" id="pause" />
+        <input type="button" value="结束" id="stop" />
+    </div>
+</body>
+</html>
